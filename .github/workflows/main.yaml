@@ -31,8 +31,3 @@ jobs:
 
     - name: Test cmd & binary
       run: docker-compose version
-
-# debugging
-    - name: Setup tmate session
-      if: ${{ failure() }}
-      uses: mxschmitt/action-tmate@v3
