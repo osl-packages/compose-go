@@ -22,5 +22,6 @@ fi
 # Create binary / Update if exists
 cd $COMPOSE_DIR \
     && make binary \
+    && mkdir $PROJECT_DIR/src/bin \
     && cp -f $COMPOSE_DIR/bin/build/docker-compose $PROJECT_DIR/src/bin \
     && rm -rf $COMPOSE_DIR
