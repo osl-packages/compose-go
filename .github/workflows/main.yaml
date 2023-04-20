@@ -1,0 +1,33 @@
+name: main
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        miniconda-version: "latest"
+        environment-file: conda/env.yaml
+        channels: conda-forge,nodefaults
+        activate-environment: compose
+        use-mamba: true
+        miniforge-variant: Mambaforge
+
+    - name: Create binary
+      run: make binary
+
+    - name: Install package
+      run: pip install -e .
+
+    - name: Test cmd & binary
+      run: docker-compose version

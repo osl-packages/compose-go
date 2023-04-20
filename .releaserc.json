@@ -22,12 +22,12 @@
             "countMatches": true
           },
           {
-            "files": ["pyproject.toml"],
+            "files": ["setup.py"],
             "from": "version = \".*\"  # changed by semantic-release",
             "to": "version = \"${nextRelease.version}\"  # changed by semantic-release",
             "results": [
               {
-                "file": "pyproject.toml",
+                "file": "setup.py",
                 "hasChanged": true,
                 "numMatches": 1,
                 "numReplacements": 1
@@ -41,8 +41,8 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "poetry build",
-        "publishCmd": "poetry publish"
+        "prepareCmd": "python setup.py sdist bdist_wheel",
+        "publishCmd": "twine upload -r testpypi dist/* -u $TWINE_USERNAME -p $TWINE_PASSWORD"
       }
     ],
     [
@@ -55,7 +55,7 @@
       "@semantic-release/git",
       {
         "assets": [
-          "pyproject.toml",
+          "setup.py",
           "src/__init__.py"
         ],
         "message": "chore(release): ${nextRelease.version}"

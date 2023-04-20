@@ -27,6 +27,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        TWINE_USER: ${{ secrets.TWINE_USER }}
+        TWINE_PASS: ${{ secrets.TWINE_PASS }}
       run: |
         poetry config pypi-token.pypi ${PYPI_TOKEN}
         npx --yes \
