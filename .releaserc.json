@@ -23,8 +23,8 @@
           },
           {
             "files": ["setup.py"],
-            "from": "    version = \".*\"  # changed by semantic-release",
-            "to": "    version = \"${nextRelease.version}\"  # changed by semantic-release",
+            "from": "    version = \".*\", # changed by semantic-release",
+            "to": "    version = \"${nextRelease.version}\", # changed by semantic-release",
             "results": [
               {
                 "file": "setup.py",
