@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="compose-go",
-    version="1.0.1", # changed by semantic-release
+    version="1.0.2", # changed by semantic-release
     author="Luã Bida Vacaro",
     author_email="luabidaa@gmail.com",
     description="Docker Compose v2 (GoLang) wrapped in a Python Package",
