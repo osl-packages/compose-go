@@ -54,6 +54,7 @@ jobs:
         PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
       run: |
+        poetry config pypi-token.pypi ${PYPI_TOKEN}
         make binary
         npx --yes \
           -p semantic-release \
@@ -66,4 +67,3 @@ jobs:
           -p "@semantic-release/git" \
           -p "@google/semantic-release-replace-plugin" \
           semantic-release --setup --ci
-        
