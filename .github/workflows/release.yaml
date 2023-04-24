@@ -48,6 +48,7 @@ jobs:
           semantic-release --setup --dry-run
 
     - name: Release
+      if: ${{ github.event_name == 'workflow_dispatch' }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
