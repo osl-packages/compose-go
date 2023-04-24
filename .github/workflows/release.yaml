@@ -27,10 +27,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-        TWINE_USER: ${{ secrets.TWINE_USER }}
-        TWINE_PASS: ${{ secrets.TWINE_PASS }}
+        TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
       run: |
-        poetry config pypi-token.pypi ${PYPI_TOKEN}
         npx --yes \
           -p semantic-release \
           -p conventional-changelog-conventionalcommits \
@@ -42,3 +40,5 @@ jobs:
           -p "@semantic-release/git" \
           -p "@google/semantic-release-replace-plugin" \
           semantic-release --ci
+          
+        twine upload dist/* -p ${{ secrets.PYPI_TOKEN }}
