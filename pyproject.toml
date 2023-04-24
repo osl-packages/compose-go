@@ -7,6 +7,11 @@ readme = "README.md"
 packages = [{include = "src"}]
 include = ["src/compose/docker-compose"]
 
+
+[tool.poetry.scripts]
+docker-compose = "src.compose:docker_compose"
+
+
 [tool.poetry.dependencies]
 python = "^3.11"
 click = "^8.1.3"
