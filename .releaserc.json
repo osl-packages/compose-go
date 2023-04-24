@@ -41,8 +41,8 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "python setup.py sdist bdist_wheel",
-        "publishCmd": "twine upload dist/*"
+        "prepareCmd": "poetry build",
+        "publishCmd": "poetry publish"
       }
     ],
     [
