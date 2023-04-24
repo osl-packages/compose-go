@@ -1,6 +1,11 @@
 name: release
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -17,11 +22,30 @@ jobs:
       with:
         miniconda-version: "latest"
         mamba-version: "*"
-        environment-file: conda/dev.yaml
+        environment-file: conda/env.yaml
         channels: conda-forge,nodefaults
         activate-environment: compose
         use-mamba: true
         miniforge-variant: Mambaforge
+
+    - name: Test release
+      if: ${{ github.event_name != 'workflow_dispatch' }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
+      run: |
+        npx --yes \
+          -p semantic-release \
+          -p conventional-changelog-conventionalcommits \
+          -p "@semantic-release/commit-analyzer" \
+          -p "@semantic-release/release-notes-generator" \
+          -p "@semantic-release/changelog" \
+          -p "@semantic-release/exec" \
+          -p "@semantic-release/github" \
+          -p "@semantic-release/git" \
+          -p "@google/semantic-release-replace-plugin" \
+          semantic-release --dry-run
 
     - name: Release
       env:
