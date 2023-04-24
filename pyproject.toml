@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "compose-go"
-version = "1.0.3" # changed by semantic-release
+version = "1.0.4" # changed by semantic-release
 description = "Docker Compose v2 (GoLang) wrapped in a Python Package"
 authors = ["Luã Bida Vacaro <luabidaa@gmail.com>"]
 readme = "README.md"
