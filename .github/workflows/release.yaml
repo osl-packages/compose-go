@@ -55,7 +55,6 @@ jobs:
         TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
       run: |
         make binary
-        python setup.py sdist bdist_wheel
         npx --yes \
           -p semantic-release \
           -p conventional-changelog-conventionalcommits \
@@ -67,4 +66,5 @@ jobs:
           -p "@semantic-release/git" \
           -p "@google/semantic-release-replace-plugin" \
           semantic-release --setup --ci
+        python setup.py sdist bdist_wheel
         twine upload dist/* -p ${{ secrets.PYPI_TOKEN }}
