@@ -42,7 +42,7 @@
       "@semantic-release/exec",
       {
         "prepareCmd": "python setup.py sdist bdist_wheel",
-        "publishCmd": "twine upload dist/* -p ${{ secrets.PYPI_TOKEN }}"
+        "publishCmd": "twine upload dist/* -p ${PYPI_TOKEN}"
       }
     ],
     [
