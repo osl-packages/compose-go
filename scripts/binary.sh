@@ -27,5 +27,5 @@ git checkout "$COMPOSE_VERSION"
 . "${PROJECT_DIR}/scripts/versioning.sh" "$COMPOSE_VERSION"
 
 make binary
-cp -f "$COMPOSE_DIR/bin/build/docker-compose" "$PROJECT_DIR/src/compose" \
+cp -f "$COMPOSE_DIR/bin/build/docker-compose" "$PROJECT_DIR/src/compose"
 rm -rf "$COMPOSE_DIR"

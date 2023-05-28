@@ -32,13 +32,14 @@ jobs:
           use-mamba: true
           miniforge-variant: Mambaforge
 
-      - name: Test release
+      - name: Build package
         if: ${{ github.event_name != 'workflow_dispatch' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
           TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
         run: |
+          make binary
           poetry build
 
       - name: Release
@@ -48,10 +49,7 @@ jobs:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
           TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
         run: |
-          rm -rf dist
           poetry config pypi-token.pypi ${PYPI_TOKEN}
-          make binary
-          poetry build
           poetry publish
 
       - name: export docker-compose version
@@ -65,7 +63,7 @@ jobs:
         with:
           author_name: Ivan Ogasawara
           author_email: ivan.ogasawara@gmail.com
-          message: 'New release'
+          message: 'Changes for ${{ steps.docker-compose-version.outputs.VERSION }}'
           add: 'pyproject.toml'
 
       - name: Create Release
