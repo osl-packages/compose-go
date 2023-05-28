@@ -27,7 +27,9 @@ jobs:
       run: make binary
 
     - name: Install package
-      run: poetry build
+      run: |
+          poetry build
+          poetry install
 
     - name: Test cmd & binary
       run: docker-compose version
