@@ -8,7 +8,7 @@ if [ "$1" == "" ]; then
   exit 1
 fi
 
-SEARCH_BY="version\s*=\s*\"[0-9]*\.[0-9]*\.[0-9]*\"\s*#\s*docker-compose\sversion"
+SEARCH_BY="version\s*=\s*\"v[0-9]*\.[0-9]*\.[0-9]*\"\s*#\s*docker-compose\sversion"
 REPLACE_BY="version = \"$1\"  # docker-compose version"
 
 PYPROJECT_PATH="${PROJECT_DIR}/pyproject.toml"
