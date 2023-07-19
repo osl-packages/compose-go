@@ -39,7 +39,6 @@ jobs:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
           TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
         run: |
-          make binary
           poetry build
 
       - name: Release
