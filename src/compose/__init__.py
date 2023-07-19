@@ -2,19 +2,16 @@ import subprocess
 import sys
 
 from pathlib import Path
+from typing import List
 
-import click
 
-
-def run(args):
-    command = [f'{Path(__file__).parent}/docker-compose'] + list(args)
+def run(args: List[str]):
+    command = [f'{Path(__file__).parent}/docker-compose'] + args[1:]
     result = subprocess.run(command, stdout=sys.stdout, stderr=sys.stderr)
 
 
-@click.command('docker-compose')
-@click.argument('args', nargs=-1)
-def docker_compose(args):
-    run(args)
+def docker_compose():
+    run(sys.argv)
 
 
 if __name__ == '__main__':
