@@ -27,6 +27,7 @@ jobs:
       run: |
           poetry build
           poetry install
+          pip install $(ls dist/compose_go*tar.gz)
 
     - name: Test cmd & binary
       run: docker-compose version
