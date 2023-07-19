@@ -33,7 +33,6 @@ jobs:
           miniforge-variant: Mambaforge
 
       - name: Build package
-        if: ${{ github.event_name != 'workflow_dispatch' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
