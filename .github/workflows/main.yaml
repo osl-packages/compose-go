@@ -23,9 +23,6 @@ jobs:
         use-mamba: true
         miniforge-variant: Mambaforge
 
-    - name: Create binary
-      run: make binary
-
     - name: Install package
       run: |
           poetry build

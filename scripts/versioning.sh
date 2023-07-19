@@ -19,5 +19,5 @@ NEW_CONTENT=$(cat "${PYPROJECT_PATH}")
 
 if [ "${ORIGINAL_CONTENT}" == "${NEW_CONTENT}" ]; then
   echo "[EE] The project uses already the latest docker-compose version."
-  exit 1
+  exit 0
 fi

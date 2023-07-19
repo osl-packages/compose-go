@@ -3,7 +3,7 @@
 PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd .. && pwd )"
 COMPOSE_DIR="$PROJECT_DIR/build/compose"
 
-set -x
+set -ex
 
 rm -rf "$COMPOSE_DIR"
 git clone https://github.com/docker/compose "$COMPOSE_DIR"
@@ -24,8 +24,9 @@ COMPOSE_VERSION="$(git tag --sort=-v:refname|head -n 1)"
 
 git checkout "$COMPOSE_VERSION"
 
-. "${PROJECT_DIR}/scripts/versioning.sh" "$COMPOSE_VERSION"
+"${PROJECT_DIR}/scripts/versioning.sh" "$COMPOSE_VERSION"
 
 make binary
 cp -f "$COMPOSE_DIR/bin/build/docker-compose" "$PROJECT_DIR/src/compose"
 rm -rf "$COMPOSE_DIR"
+set +ex
