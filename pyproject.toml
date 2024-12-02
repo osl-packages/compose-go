@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "compose-go"
-version = "v2.30.3"  # docker-compose version
+version = "v2.31.0"  # docker-compose version
 description = "Docker Compose v2 (GoLang) wrapped in a Python Package"
 authors = [
   "Luã Bida Vacaro <luabidaa@gmail.com>",
