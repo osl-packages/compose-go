@@ -18,19 +18,19 @@ jobs:
         shell: bash -l {0}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: conda-incubator/setup-miniconda@v3
         with:
-          miniconda-version: "latest"
-          mamba-version: "*"
+          miniforge-version: "latest"
           environment-file: conda/env.yaml
           channels: conda-forge,nodefaults
           activate-environment: compose
-          use-mamba: true
-          miniforge-variant: Mambaforge
+          auto-update-conda: true
+          conda-solver: libmamba
+          python-version: "3.11"
 
       - name: Build package
         env:
