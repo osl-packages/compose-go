@@ -1,6 +1,6 @@
 [project]
 name = "compose-go"
-version = "v2.35.1"  # docker-compose version
+version = "v2.36.0"  # docker-compose version
 description = "Docker Compose v2 (GoLang) wrapped in a Python Package"
 authors = [
   { name = "Luã Bida Vacaro", email = "luabidaa@gmail.com"},
